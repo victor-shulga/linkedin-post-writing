@@ -1,0 +1,22 @@
+{
+  "name": "linkedin-post-writing",
+  "metadata": {
+    "description": "A 9-step process for writing lead-generating LinkedIn posts in the writer's own voice — idea to publish-ready, with aggressive formatting baked in."
+  },
+  "owner": {
+    "name": "Victor Shulga",
+    "url": "https://github.com/victor-shulga"
+  },
+  "plugins": [
+    {
+      "name": "linkedin-post-writing",
+      "source": "./",
+      "description": "Turns ONE idea into a publish-ready LinkedIn post via a 9-step pipeline (post type → format → angle → meat → body → trailer → humanize → layout). Voice, audience, and language are the user's inputs, so it writes in their voice — not a generic copywriter voice. Self-contained; aggressive formatting and anti-AI humanize rules ship inside.",
+      "version": "0.1.0",
+      "keywords": ["linkedin", "content", "ghostwriting", "social-selling", "lead-generation", "copywriting"],
+      "author": {
+        "name": "Victor Shulga"
+      }
+    }
+  ]
+}
