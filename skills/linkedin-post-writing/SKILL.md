@@ -59,7 +59,7 @@ The single biggest fork. Ask (or infer): is this an **expert** post or a
 | Voice | practitioner who teaches | more vulnerable, first-person, a real scene/emotion |
 | Framework (Step 5) | angle drives it (PAS / structure) | narrative-first — **BAB** by default; PAS for an unpopular opinion |
 | Meat (Step 4) | the lesson / system you teach | the insight FROM the story; substance = story + one takeaway |
-| CTA | lead-gen / hand-raiser / save-and-check | soft — a reflective question; never "book a call" |
+| CTA | lead-gen / hand-raiser / save-and-check | soft — an invitation to share ("tell me your version in the comments"); never a question, never "book a call" |
 
 Lock the type before moving on — everything downstream branches from it.
 
@@ -176,8 +176,8 @@ ending into the body — do **not** present "the summary" as a separate delivera
 
 The trailer is the first ~3 lines: **hook → blank line → re-hook**. Two jobs:
 stop the scroll, and make the reader tap "more". Analyze what would land
-(concrete numbers, "you're doing it wrong" tension, a costly self-told lie;
-for personal — a raw, specific opening line) and present **5 hook +
+(concrete numbers, "you're doing it wrong" tension, a costly self-told lie, a
+blunt question; for personal — a raw, specific opening line) and present **5 hook +
 re-hook combos**, each labeled with its angle, with a recommendation. Keep the
 address consistent. Watch for the hook duplicating the body's closing line — flag it.
 
@@ -246,9 +246,9 @@ In 4 years the market under agencies flipped:   ← colon intro
 
 The war for the client got real.    ← punch line after the list
 
-Audit your own agency.              ← short command line before the CTA question
+Audit your own agency.              ← short command line
 
-Which step has the biggest hole for you?
+Comment which step has the hole.    ← CTA: directive, NOT a question
 ```
 
 **Self-check before saving** — read the draft as a SHAPE: is it mostly whitespace?
@@ -281,8 +281,11 @@ grading rubric and you loop until it clears — the writer never marks its own w
    «gate not taken — X/90, weakest = <category>» and let the author decide.
    **Silent auto-ship below 90 is forbidden.**
 5. **Hook hard rule (checked at the gate):** ≤ 10 words, a number in ~8/10 hooks,
-   no emoji in line 1, address the reader as "you" formally, **NEVER a question** —
-   the hook is a statement. A 13-word hook fails.
+   no emoji in line 1, address the reader as "you" formally. A question hook is
+   allowed. A 13-word hook fails.
+6. **CTA hard rule: the CTA is NEVER a question.** Close with a directive line — a
+   command ("Audit your own agency."), a comment-gate ("comment GTM and I'll send
+   the checklist"), or "DM me". A post that ends on a question fails the gate.
 
 Only **after** the gate is taken (or explicitly flagged after 3 rounds): save the final
 post as a `.md` file and present it — lead with the final `total` score.
