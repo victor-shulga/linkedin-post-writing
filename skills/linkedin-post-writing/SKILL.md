@@ -1,7 +1,7 @@
 ---
 name: linkedin-post-writing
 description: >-
-  A proven 9-step process for writing lead-generating LinkedIn posts in the
+  A proven 10-step process for writing lead-generating LinkedIn posts in the
   WRITER'S OWN voice — not a generic "copywriter" voice. Use this skill whenever
   the user wants to write, draft, or finalize a LinkedIn post: "write a LinkedIn
   post", "draft a post", "help me post on LinkedIn", "turn this idea into a
@@ -9,7 +9,7 @@ description: >-
   to build a post around it. Also trigger when continuing an in-progress post
   (picking a framework, choosing a hook, formatting). Runs the full pipeline:
   idea → post type (expert/personal) → format → angle → meat+problem → body
-  (angle-driven) → summary → trailer → humanize → layout. Voice, audience (ICP),
+  (angle-driven) → summary → trailer → humanize → layout → blind grade gate. Voice, audience (ICP),
   and language are the user's inputs — collect them up front. Do NOT use for cold
   email sequences or for generating raw content-idea calendars — this skill takes
   ONE idea through to a publish-ready post.
@@ -17,12 +17,12 @@ description: >-
 
 # LinkedIn Post Process
 
-A 9-step method for turning **one idea** into a publish-ready LinkedIn post that
+A 10-step method for turning **one idea** into a publish-ready LinkedIn post that
 sells by being read: a hook stops the scroll, the body delivers one sharp lesson,
 the formatting keeps it scannable.
 
 Flow: **idea → 1 post type → 2 format → 3 angle → 4 meat+problem → 5 body (angle
-drives the framework) → 6 summary → 7 trailer → 8 humanize → 9 layout.**
+drives the framework) → 6 summary → 7 trailer → 8 humanize → 9 layout → 10 grade gate.**
 
 This is a **collaborative draft, not a one-shot generation.** Work step by step
 and check in with the user between steps — fold each correction in and reprint
@@ -176,8 +176,8 @@ ending into the body — do **not** present "the summary" as a separate delivera
 
 The trailer is the first ~3 lines: **hook → blank line → re-hook**. Two jobs:
 stop the scroll, and make the reader tap "more". Analyze what would land
-(concrete numbers, "you're doing it wrong" tension, a costly self-told lie, a
-blunt question; for personal — a raw, specific opening line) and present **5 hook +
+(concrete numbers, "you're doing it wrong" tension, a costly self-told lie;
+for personal — a raw, specific opening line) and present **5 hook +
 re-hook combos**, each labeled with its angle, with a recommendation. Keep the
 address consistent. Watch for the hook duplicating the body's closing line — flag it.
 
@@ -256,8 +256,36 @@ are parallel points fir-trees (short→long, `→`)? is there a 1–3 word punch
 few lines? are there any 3 equal-length lines in a row (fix them)? If any answer is
 no, reformat before presenting.
 
-Then save the final post as a `.md` file and present it. Keep counts consistent:
-if a number appears in the body, update every mention when the list changes.
+Keep counts consistent: if a number appears in the body, update every mention when
+the list changes. Do NOT save or present yet — the post goes through Step 10 first.
+
+### Step 10 — Grade gate (blind judge) — MANDATORY, don't skip
+
+The last gate before the post is shown. A **fresh model** scores the draft against a
+grading rubric and you loop until it clears — the writer never marks its own work up.
+
+1. **Spawn a blind judge** — a separate subagent with a clean context. Give it ONLY:
+   the draft text + post type/format + the rubric. Do **NOT** give it the backstory
+   (the idea, why, the hook draft, the creative) — blind means blind.
+   - Rubric: a `grader-rubric.md` scoring the post on hook, trailer, meat, structure,
+     voice, format, CTA (weighted to 100). Point the judge at your own copy; if you
+     keep one in a content-engine, `find … -name grader-rubric.md`.
+   - It returns ONLY JSON: `{"scores": {<category>: int}, "total": int,
+     "hard_fails": [..], "lowest": "<category>", "one_fix": "<one concrete edit>"}` —
+     the rubric's own categories + weights, harsh, no prose.
+2. **Gate = `total ≥ 90` AND `hard_fails` empty.**
+3. **Not taken →** fix `hard_fails` first, then apply `one_fix` to the `lowest` category
+   → **rescore with a NEW fresh subagent** (never re-ask the same judge — that's
+   self-deception). Repeat.
+4. **Stop after 3 iterations.** If still short, present the draft flagged
+   «gate not taken — X/90, weakest = <category>» and let the author decide.
+   **Silent auto-ship below 90 is forbidden.**
+5. **Hook hard rule (checked at the gate):** ≤ 10 words, a number in ~8/10 hooks,
+   no emoji in line 1, address the reader as "you" formally, **NEVER a question** —
+   the hook is a statement. A 13-word hook fails.
+
+Only **after** the gate is taken (or explicitly flagged after 3 rounds): save the final
+post as a `.md` file and present it — lead with the final `total` score.
 
 ## Output discipline
 
