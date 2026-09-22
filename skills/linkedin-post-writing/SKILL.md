@@ -183,6 +183,10 @@ address consistent. Watch for the hook duplicating the body's closing line — f
 
 Keep re-hooks short. If a re-hook runs long, offer 3–5 tighter rewrites.
 
+For hook shapes, read `references/hook-formulas.md`: 18 first-line patterns with
+an example, what each is good for, and the way each one usually gets ruined. Pull
+the 5 combos from different shapes, not five variations of one.
+
 ## Step 8 — Humanize (polish, remove AI patterns)
 
 Strip AI tells while keeping the user's voice. Defaults that come up every time:
@@ -264,7 +268,33 @@ the list changes. Do NOT save or present yet — the post goes through Step 10 f
 The last gate before the post is shown. A **fresh model** scores the draft against a
 grading rubric and you loop until it clears — the writer never marks its own work up.
 
-1. **Spawn a blind judge** — a separate subagent with a clean context. Give it ONLY:
+1. **Structural pre-gate — clear it before spawning the judge.** Six shapes read as
+   generated even when the vocabulary is clean, so a judge scoring "voice" will often
+   wave them through. Scan the draft for them yourself (or automate it with a regex
+   detector, which is cheap and exact):
+
+   | Shape | What it looks like |
+   |---|---|
+   | Myth flip | "Most teams think onboarding is a checklist. It's actually a habit." |
+   | Rule of three | "Same standups. Same tickets. Same delays." |
+   | Mirrored pair | "Everyone automates the first email. No one automates the follow-up." |
+   | Reversal | "That's not strategy. It's guessing." |
+   | Comma upsell | "It's not just a note app, it's a second brain." |
+   | Throat-clear | a first line carrying no number, no name, no action |
+
+   Two more, checked by eye: any em dash (the single clearest tell), and flat rhythm
+   (every sentence about the same length — put a three-word sentence next to a
+   thirty-word one).
+
+   **Fixing one means replacing the construction with an observation carrying a number**
+   — "Of 60 accounts we onboarded, only the ones active four times in week one stuck."
+   No number and no fact available → delete the sentence. Rephrasing it into different
+   rhetoric puts the same thing back.
+
+   Ялинка-style bullets are exempt from the rule-of-three check: short parallel bullets
+   are the required format there, not a tell.
+
+2. **Spawn a blind judge** — a separate subagent with a clean context. Give it ONLY:
    the draft text + post type/format + the rubric. Do **NOT** give it the backstory
    (the idea, why, the hook draft, the creative) — blind means blind.
    - Rubric: a `grader-rubric.md` scoring the post on hook, trailer, meat, structure,
@@ -273,17 +303,17 @@ grading rubric and you loop until it clears — the writer never marks its own w
    - It returns ONLY JSON: `{"scores": {<category>: int}, "total": int,
      "hard_fails": [..], "lowest": "<category>", "one_fix": "<one concrete edit>"}` —
      the rubric's own categories + weights, harsh, no prose.
-2. **Gate = `total ≥ 90` AND `hard_fails` empty.**
-3. **Not taken →** fix `hard_fails` first, then apply `one_fix` to the `lowest` category
+3. **Gate = structural pre-gate clear AND `total ≥ 90` AND `hard_fails` empty.**
+4. **Not taken →** fix `hard_fails` first, then apply `one_fix` to the `lowest` category
    → **rescore with a NEW fresh subagent** (never re-ask the same judge — that's
    self-deception). Repeat.
-4. **Stop after 3 iterations.** If still short, present the draft flagged
+5. **Stop after 3 iterations.** If still short, present the draft flagged
    «gate not taken — X/90, weakest = <category>» and let the author decide.
    **Silent auto-ship below 90 is forbidden.**
-5. **Hook hard rule (checked at the gate):** ≤ 10 words, a number in ~8/10 hooks,
+6. **Hook hard rule (checked at the gate):** ≤ 10 words, a number in ~8/10 hooks,
    no emoji in line 1, address the reader as "you" formally. A question hook is
    allowed. A 13-word hook fails.
-6. **CTA hard rule: the CTA is NEVER a question.** Close with a directive line — a
+7. **CTA hard rule: the CTA is NEVER a question.** Close with a directive line — a
    command ("Audit your own agency."), a comment-gate ("comment GTM and I'll send
    the checklist"), or "DM me". A post that ends on a question fails the gate.
 
